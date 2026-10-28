@@ -1,4 +1,4 @@
-# Punji API Examples
+# Indian Mutual Fund & Stock Market Data API - Python Examples (Punji)
 
 Python examples for the [Punji Data API](https://punji.ai/developers) - programmatic access
 to Indian mutual fund and stock market data: fund/stock lookup, returns, risk metrics,
@@ -7,6 +7,46 @@ fund/stock comparison.
 
 Full endpoint reference: [punji.ai/llms-api.md](https://punji.ai/llms-api.md) (also readable
 by LLM agents directly) or the human docs at [punji.ai/developers](https://punji.ai/developers).
+
+## Quickstart
+
+```bash
+curl -s "https://api.punji.ai/v1/schemes/parag-parikh-flexi-cap-fund-direct-plan-growth-48b786/returns/rolling" \
+  -H "X-API-Key: $PUNJI_API_KEY"
+```
+
+```python
+import requests
+
+resp = requests.get(
+    "https://api.punji.ai/v1/schemes/parag-parikh-flexi-cap-fund-direct-plan-growth-48b786/returns/rolling",
+    headers={"X-API-Key": "pk_live_..."},
+)
+print(resp.json())
+```
+
+Real response (Parag Parikh Flexi Cap Fund - Direct Plan - Growth, `calc_as_of` 2026-09-14 -
+not an illustrative/fabricated shape):
+
+```json
+[
+  { "duration_years": 1, "min_cagr_pct": -21.2652, "max_cagr_pct": 100.0569, "median_cagr_pct": 17.3433, "calc_as_of": "2026-09-14" },
+  { "duration_years": 3, "min_cagr_pct": 0.742,   "max_cagr_pct": 37.6443,  "median_cagr_pct": 19.2866, "calc_as_of": "2026-09-14" },
+  { "duration_years": 5, "min_cagr_pct": 4.1806,  "max_cagr_pct": 33.6188,  "median_cagr_pct": 19.09,   "calc_as_of": "2026-09-14" },
+  { "duration_years": 7, "min_cagr_pct": 14.1952, "max_cagr_pct": 22.3035,  "median_cagr_pct": 19.2757, "calc_as_of": "2026-09-14" },
+  { "duration_years": 10, "min_cagr_pct": 16.8544, "max_cagr_pct": 21.5043, "median_cagr_pct": 18.9819, "calc_as_of": "2026-09-14" }
+]
+```
+
+## Data coverage
+
+| Source | Covers | Refresh |
+|---|---|---|
+| AMFI | Every AMFI-registered mutual fund scheme - metadata, NAV, returns | Nightly |
+| NSE | Stock and index data for the liquid, AMFI-relevant universe (not every micro-cap name on the exchange); key benchmarks (Nifty 50, 100, 200, 500, Midcap 50/100, Next 50, Smallcap 100, and TRI variants) | Nightly |
+| BSE | Index data (Sensex, 100, 200, 500, and TRI variants) | Nightly |
+
+See [punji.ai/data-sources](https://punji.ai/data-sources) for the full methodology.
 
 ## Getting an API key
 
