@@ -102,3 +102,5 @@ All requests use the `requests` library and the `X-API-Key` header documented in
 
 This repo is a developer reference for the Punji Data API. Data returned by the API is
 for informational and research purposes only and does not constitute investment advice.
+
+Not affiliated with other apps or sites that use the name Punji or Meri Punji.
