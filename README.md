@@ -25,8 +25,8 @@ resp = requests.get(
 print(resp.json())
 ```
 
-Real response (Parag Parikh Flexi Cap Fund - Direct Plan - Growth, `calc_as_of` 2026-09-14 -
-not an illustrative/fabricated shape):
+Real response, Parag Parikh Flexi Cap Fund (Direct Plan - Growth) as of `calc_as_of` 2026-09-14.
+Run the curl command above to get a current one - this snapshot ages as the fund's data refreshes.
 
 ```json
 [
